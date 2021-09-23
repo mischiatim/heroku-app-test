@@ -1,5 +1,3 @@
 requests
 bokeh
 pandas
-numpy
-jinja2
