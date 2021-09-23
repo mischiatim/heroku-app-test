@@ -39,11 +39,11 @@ def create_ticker_df_all():
 
         #I will give it a certain number of tries on each request, with increasing delay time, in case there is too much traffic
 
-        num_request_attempts = 50 #20
+        num_request_attempts = 30
 
         attempts = 0
 
-        timeout = 3 #1
+        timeout = 1
 
         while attempts < num_request_attempts:
 
@@ -61,13 +61,14 @@ def create_ticker_df_all():
             except KeyError:
 
                 if attempts%3==1:
-                    #every few seconds, plot a message to let the user know we are waiting for the query results
+                    #every few seconds, plot a message to let the user know we are waiting for the query results and increase timeout time
                     waiting_text = 'Querying from Alpha Vantage API ' + '...'*timeout
                     print(waiting_text)
+                    timeout += 1
 
                 time.sleep(timeout)
                 attempts += 1
-                timeout += 1
+                
 
         #switch to increasing chronological order
         ticker_df = ticker_df.iloc[::-1]   
