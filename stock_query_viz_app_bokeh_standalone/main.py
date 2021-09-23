@@ -39,11 +39,11 @@ def create_ticker_df_all():
 
         #I will give it a certain number of tries on each request, with increasing delay time, in case there is too much traffic
 
-        num_request_attempts = 20
+        num_request_attempts = 50 #20
 
         attempts = 0
 
-        timeout = 1
+        timeout = 3 #1
 
         while attempts < num_request_attempts:
 
