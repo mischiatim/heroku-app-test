@@ -48,7 +48,7 @@ def create_ticker_df_all():
         while attempts < num_request_attempts:
 
             try:
-                time.sleep(timeout)
+                #time.sleep(timeout)
 
                 response = requests.get(url)
 
