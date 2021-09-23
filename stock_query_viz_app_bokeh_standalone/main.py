@@ -39,16 +39,17 @@ def create_ticker_df_all():
 
         #I will give it a certain number of tries on each request, with increasing delay time, in case there is too much traffic
 
-        num_request_attempts = 30
+        num_request_attempts = 20
 
         attempts = 0
 
-        timeout = 3
+        timeout = 1
 
         while attempts < num_request_attempts:
 
+            time.sleep(timeout)
+            
             try:
-                time.sleep(timeout)
 
                 response = requests.get(url)
 
@@ -65,8 +66,7 @@ def create_ticker_df_all():
                     waiting_text = 'Querying from Alpha Vantage API ' + '...'*timeout
                     print(waiting_text)
                     timeout += 1
-
-                #time.sleep(timeout)
+                    
                 attempts += 1
                 
 
